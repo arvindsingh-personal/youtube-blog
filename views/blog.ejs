@@ -20,6 +20,10 @@
           <% } %>
           <pre><%= blog.body %></pre>
         </div>
+        <div class="container mt-3 align-items-center">
+            <img src="<%= blog.createdBy.profileImageURL %>" alt="Profile Image" width="100px" class="img-fluid" />
+            <%= blog.createdBy.fullName %>
+        </div>
       </div>
 
      <%- include("./partials/scripts") %>
