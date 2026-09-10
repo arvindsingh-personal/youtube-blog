@@ -26,6 +26,35 @@
         </div>
       </div>
 
+    <h4 >Comments (<%= comments.length %>)</h4>
+
+      <% if (locals.user) { %>
+        <form
+      class="container mt-4"
+      action="/blog/comment/<%= blog._id %>"
+      method="post"
+    >
+      <div class="row mb-3">
+        <div class="col-sm-10">
+          <input type="text" name="comment" class="form-control" id="comment" placeholder="Enter your comment" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+      <% } %>
+
+      <div class="container mt-4">
+        <% comments.forEach(comment => { %>
+            <div class="card mb-3">
+                <div class="card-body">
+                <img src="<%= comment.createBy.profileImageURL %>" alt="Profile Image" width="50px" class="img-fluid" />
+                    <%= comment.createBy.fullName %>
+                <pre class="card-text"><%= comment.comment %></pre>
+                </div>
+            </div>
+       <% }) %>
+      </div>
+
      <%- include("./partials/scripts") %>
   </body>
 </html>
