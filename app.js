@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/blogify")
+  .connect(process.env.DATABASE_URL)
   .then((e) => console.log("MongoDB Connected"));
 
 app.use(express.static(path.resolve("./public")));
